@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+ 
+
+
+{% block content %}
+<div class="col-md-6">
+  <div class="tab-content">
+    {% for day in days %}
+
+      <div id="{{day.id}}" class="tab-pane fade 
+          {% if forloop.counter0 == 0 %} in active
+          {% endif %}">
+          <h3>{{day.title}}</h3>
+          <h4>Top ten &lpar;10&rpar; most popular devices</h4>
+          <p>{{ day.display | safe }}</p>
+          <div>
+            <p style="margin-top:30px">Weekly Change in &percnt;  </p>
+            <p>{{day.percentage | safe}}</p>
+          </div>
+      </div>
+
+    {% endfor %}
+  </div>
+</div><!-- col-9 ends here  -->
+
+<div class="col-md-3">
+  <ul class="nav nav-pills nav-stacked">
+    {% for day in days %}
+      <li {%if forloop.counter0 == 0 %} class="active"
+      {% endif %}>
+      <a data-toggle="pill" href="#{{day.id}}">{{day.title}}</a></li>
+    {% endfor %}
+  </ul>
+</div><!-- col-3 ends here  -->
+
+{% endblock %}

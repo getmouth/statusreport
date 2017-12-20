@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Status Report</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale = 1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/status/static/assets/custom/sticky-footer-navbar.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+  </head>
+  <body>
+    <div class="container">
+       <!-- Static navbar -->
+       <nav class="navbar navbar-default">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/view1/">Status Report</a>
+            </div><!-- navbar-header ends here  -->
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="/view1/">View 1</a></li>
+                <li><a href="/view2/">View 2</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div><!--/.container -->
+        </nav><!-- nav ends here  -->
+
+      <div class="row">
+        {% block content %}
+
+        <div class="col-md-9">
+          <div class="tab-content">
+
+            {% for day in days %}
+
+            <div id="{{day.id}}" class="tab-pane fade 
+            {% if forloop.counter0 == 0 %} in active
+            {% endif %}">
+              <h3>{{day.title}}</h3>
+              <h4>Top ten &lpar;10&rpar; most popular devices</h4>
+              <p>{{ day.display | safe }}</p>
+            </div>
+
+            {% endfor %}
+
+          </div>
+        </div><!-- col-9 ends here  -->
+
+        <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked">
+              {% for day in days %}
+                <li {%if forloop.counter0 == 0 %} class="active"
+                {% endif %}>
+                <a data-toggle="pill" href="#{{day.id}}">{{day.title}}</a></li>
+              {% endfor %}
+            </ul>
+          </div><!-- col-3 ends here  -->
+          {% endblock %}
+     </div> <!-- row ends here  -->
+        
+
+      <footer class="footer">
+        <div class="container">
+          <p class="text-muted">{{ current_date }} </p>
+        </div>
+      </footer>
+
+     
+
+
+    </div><!-- container ends here  -->
+  </body>
+</html>
+
