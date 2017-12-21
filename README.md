@@ -12,6 +12,6 @@
 * install django 
 * install pandas
 * install numpy
-* Copy the statusapp(status) folder into the virtualenv DIR 
+* Copy the statusreport folder into the virtualenv DIR 
 * navigate into the app DIR and run [python manage.py runserver] to start the local server.
   copy the url into the browser and hit enter.
