@@ -1,0 +1,6 @@
+
+# temporary files
+ *.tmp
+ 
+# ignore vscode files
+ .vscode
